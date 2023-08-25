@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Inc-Dec</title>
+
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .border {
+            border: 2px black solid;
+            height: 530px;
+            width: 400px;
+            border-radius: 10px;
+
+            margin-top: 100px;
+            background-color: burlywood;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            
+        }
+
+        .card {
+            height: 530px;
+            width: 400px;
+            border: 2px white solid;
+            border-radius: 10px;
+
+            margin-top: 100px;
+            background-color: antiquewhite;
+
+        }
+
+        .img {
+            height: 220px;
+            width: 400px;
+
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .heading {
+            color: black;
+            font-size: 30px;
+            text-align: center;
+            margin-top: -2px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+
+        .off-price {
+            text-align: center;
+            color: green;
+            margin-top: -15px;
+
+        }
+
+        .price {
+            text-align: center;
+            font-size: 25px;
+            margin-top: -8px;
+        }
+
+        .delete {
+            font-size: 15px;
+            margin-left: 10px;
+            color: red;
+        }
+
+        .alert {
+            text-align: center;
+            color: tomato;
+            font-size: 20px;
+            margin-top: -10px;
+        }
+
+        .quantity {
+            text-align: center;
+            font-size: 23px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin-top: -10px;
+
+        }
+
+        .btn-quantity {
+            display: flex;
+            justify-content: space-around;
+            margin-top: -17px;
+        }
+
+        .btn {
+            height: 35px;
+            width: 35px;
+            font-size: 30px;
+        }
+
+        .num {
+            font-size: 30px;
+            margin-top: 0px;
+        }
+
+        .btn-buy {
+            background-color: blueviolet;
+            font-size: 20px;
+            color: white;
+            border-radius: 5px;
+            padding: 3px;
+
+        }
+
+        .buy {
+            margin-left: 90px;
+            margin-right: 10px;
+        }
+
+        .theme {
+            background-color: brown;
+            width: 170px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 7px;
+            padding-left: 10px;
+        }
+
+        .btn-theme {
+            background-color: blueviolet;
+            font-size: 15px;
+            color: aliceblue;
+            margin-bottom: 10px;
+
+        }
+
+        .btnn {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body id="body-bg">
+
+
+    <div class="container">
+        <div class="card">
+            <img src="productgcc.jpg" class="img" />
+
+            <p class="heading">Methyl-Testosterone</p>
+            <p class="off-price">Min.50% Off</p>
+            <p class="price">RS.500 <del class="delete">Rs.699</del></p>
+            <p class="alert">Hurry Up Only 7 Product left...!</p>
+            <p class="quantity">Quantity🛒</p>
+            <div class="btn-quantity">
+                <button class="btn" onclick="changeNum('increse' , 0 )">+</button>
+                <p class="num" id="quantity0">1</p>
+                <button class="btn" onclick="changeNum('decrese', 0 )">-</button>
+            </div>
+            <button class="btn-buy buy">Buy Now</button>
+            <button class="btn-buy">Add To Cart</button>
+
+        </div>
+        <div class="card">
+            <img src="productgcc.jpg" class="img" />
+
+            <p class="heading">Methyl-Testosterone</p>
+            <p class="off-price">Min.50% Off</p>
+            <p class="price">RS.500 <del class="delete">Rs.699</del></p>
+            <p class="alert">Hurry Up Only 7 Product left...!</p>
+            <p class="quantity">Quantity🛒</p>
+            <div class="btn-quantity">
+                <button class="btn" onclick="changeNum('increse' , 1)">+</button>
+                <p class="num" id="quantity1">1</p>
+                <button class="btn" onclick="changeNum('decrese', 1)">-</button>
+            </div>
+            <button class="btn-buy buy">Buy Now</button>
+            <button class="btn-buy">Add To Cart</button>
+
+        </div>
+        <div class="card">
+            <img src="productgcc.jpg" class="img" />
+
+            <p class="heading">Methyl-Testosterone</p>
+            <p class="off-price">Min.50% Off</p>
+            <p class="price">RS.500 <del class="delete">Rs.699</del></p>
+            <p class="alert">Hurry Up Only 7 Product left...!</p>
+            <p class="quantity">Quantity🛒</p>
+            <div class="btn-quantity">
+                <button class="btn" onclick="changeNum( 'increse' , 2)">+</button>
+                <p class="num" id="quantity2">1</p>
+                <button class="btn" onclick="changeNum('decrese', 2)">-</button>
+            </div>
+            <button class="btn-buy buy">Buy Now</button>
+            <button class="btn-buy">Add To Cart</button>
+
+        </div>
+
+    </div>
+    <script>
+
+        const arrno = [0, 1, 2];
+
+        function changeNum(cardno, index) {
+
+            const numquant = document.getElementById(`quantity${index}`);
+
+            const quantity = arrno[index];
+
+            const prod = parseInt(numquant  .innerText);
+            if (cardno == 'decrese' && quantity == 1) {
+                return
+            }
+            if (cardno == 'increse' && quantity == 10) {
+
+                return
+            }
+            if (cardno == 'increse') {
+                arrno[index]++;
+
+            }
+            else {
+                arrno[index]--;
+            }
+
+            numquant.innerText = arrno[index];
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
